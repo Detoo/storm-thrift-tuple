@@ -1,5 +1,5 @@
 from time import sleep
-import pickle
+import cPickle
 from pyleus.storm import Spout
 
 from message_services.ttypes import MsgType, Message
@@ -18,7 +18,7 @@ class MsgSenderSpout(Spout):
         try:
             msg_body = next(self.msg_bodies)
             msg = Message(type=MsgType.TYPE_A, body=msg_body)
-            ser_msg = pickle.dumps(msg)
+            ser_msg = cPickle.dumps(msg)
             self.log('emitting message: {}'.format(msg))
             self.emit([ser_msg], tup_id=hash(msg))
         except StopIteration:
