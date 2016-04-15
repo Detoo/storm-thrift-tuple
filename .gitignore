@@ -1,3 +1,4 @@
 *.iml
 .idea/
-app_services/
+app/message_services/
+*.jar

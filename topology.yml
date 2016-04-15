@@ -1,0 +1,16 @@
+---
+
+name: app
+
+workers: 1
+
+topology:
+  - spout:
+      name: msg-sender-spout
+      module: app.msg_sender_spout
+
+  - bolt:
+      name: msg-logger-bolt
+      groupings:
+        - shuffle_grouping: msg-sender-spout
+      module: app.msg_logger_bolt
