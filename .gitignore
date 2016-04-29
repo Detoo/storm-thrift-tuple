@@ -3,3 +3,4 @@
 app/message_services/
 *.jar
 *.pyc
+tmp/

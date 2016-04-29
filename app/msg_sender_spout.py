@@ -17,9 +17,10 @@ class MsgSenderSpout(Spout):
     def next_tuple(self):
         try:
             msg_body = next(self.msg_bodies)
-            msg = Message(type=MsgType.TYPE_A, body=msg_body)
+            msg = Message(type=MsgType.TYPE_A, body=msg_body, score=98.7654321)
             ser_msg = serialize(msg)
             self.log('emitting message: {}'.format(msg))
+            self.log('serialized message: {}'.format(ser_msg))
             self.emit([ser_msg], tup_id=hash(msg))
         except StopIteration:
             sleep(10)

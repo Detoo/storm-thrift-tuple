@@ -7,4 +7,5 @@ struct Message {
     1: required i64 id;
     2: required MsgType type;
     3: required string body;
+    4: optional double score;
 }
